@@ -3,6 +3,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
+//port
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -15,7 +16,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-
+//connection
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost/Cluster0',
   {
@@ -26,7 +27,7 @@ mongoose.connect(
   }
 );
 
-// routes
+// routes 
 app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {

@@ -11,6 +11,7 @@ router.post("/api/transaction", ({body}, res) => {
     });
 });
 
+//dbconnection
 router.post("/api/transaction/bulk", ({body}, res) => {
   Transaction.insertMany(body)
     .then(dbTransaction => {

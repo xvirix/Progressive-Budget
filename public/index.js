@@ -45,13 +45,13 @@ function populateChart() {
   let reversed = transactions.slice().reverse();
   let sum = 0;
 
-  // create date labels for chart
+  // create date labels for chart.
   let labels = reversed.map(t => {
     let date = new Date(t.date);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   });
 
-  // create incremental values for chart
+  // create incremental values 
   let data = reversed.map(t => {
     sum += parseInt(t.value);
     return sum;
@@ -107,12 +107,12 @@ function sendTransaction(isAdding) {
   // add to beginning of current array of data
   transactions.unshift(transaction);
 
-  // re-run logic to populate ui with new record
+  
   populateChart();
   populateTable();
   populateTotal();
   
-  // also send to server
+
   fetch("/api/transaction", {
     method: "POST",
     body: JSON.stringify(transaction),
